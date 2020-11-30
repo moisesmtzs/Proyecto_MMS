@@ -1,5 +1,7 @@
 #include "videogame.h"
+#include "menu.h"
 #include <stdexcept>
+#include <list>
 
 int main(){
 
@@ -131,15 +133,8 @@ int main(){
             if ( ptr == nullptr ){
                 cout << "Civilización no encontrada" << endl;
             } else {
-                cout << "Civilización encontrada" << endl;
-                cout << endl;
-                cout << left;
-                cout << setw(12) << "Nombre";
-                cout << setw(12) << "X";
-                cout << setw(12) << "Y";
-                cout << setw(12) << "Puntuación";
-                cout << endl;
-                cout << *ptr << endl;
+                cout << endl << "Civilizacion encontrada" << endl << endl;
+                men(*ptr);
             }
 
         }

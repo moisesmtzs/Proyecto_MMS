@@ -1,15 +1,13 @@
 #ifndef CIVILIZACION_H
 #define CIVILIZACION_H
 
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <algorithm>
+#include "aldeano.h"
 
 using namespace std;
 
 class Civilizacion{
     
+    list<Aldeano> aldeanos;
     string nombre;
     float x,y;
     float puntuacion;
@@ -24,14 +22,24 @@ class Civilizacion{
         float getY();
         void setPuntuacion( float n );
         float getPuntuacion();
+        void agregarInicio( const Aldeano &a );
+        void agregarFinal( const Aldeano &a );
+        void eliminarNombre( const string &s );
+        void eliminarSalud( int s );
+        void eliminarEdad();
+        void clasificarNombre();
+        void clasificarEdad();
+        void clasificarSalud();
+        Aldeano* buscar( const Aldeano &a );
+        void mostrar();
 
         friend ostream& operator<<( ostream &o, const Civilizacion &c ){
 
             o << left;
-            o << setw(12) << c.nombre;
+            o << setw(16) << c.nombre;
             o << setw(12) << c.x;
             o << setw(12) << c.y;
-            o << setw(12) << c.puntuacion;
+            o << setw(16) << c.puntuacion;
             o << endl;
             return o;
 

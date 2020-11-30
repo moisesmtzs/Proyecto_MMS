@@ -2,6 +2,7 @@
 #define VIDEOGAME_H
 
 #include "civilizacion.h"
+#include <vector>
 
 class Videogame{
 

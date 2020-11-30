@@ -19,10 +19,10 @@ void Videogame::mostrar(){
 
     cout << endl;
     cout << left;
-    cout << setw(12) << "Nombre";
+    cout << setw(16) << "Nombre";
     cout << setw(12) << "X";
     cout << setw(12) << "Y";
-    cout << setw(12) << "Puntuación";
+    cout << setw(16) << "Puntuación";
     cout << endl << endl;
     for ( size_t i = 0 ; i < civilizaciones.size() ; i++ ){
 
@@ -56,10 +56,10 @@ void Videogame::crear( const Civilizacion &c, size_t n ){
 void Videogame::front() const {
     cout << endl << "\t| Primera Civilización |" << endl << endl;
     cout << left;
-    cout << setw(12) << "Nombre";
+    cout << setw(16) << "Nombre";
     cout << setw(12) << "X";
     cout << setw(12) << "Y";
-    cout << setw(12) << "Puntuación";
+    cout << setw(16) << "Puntuación";
     cout << endl << endl;
     cout << civilizaciones.front();
 }
@@ -67,10 +67,10 @@ void Videogame::front() const {
 void Videogame::back() const {
     cout << endl << "\t| Última Civilización |" << endl << endl;
     cout << left;
-    cout << setw(12) << "Nombre";
+    cout << setw(16) << "Nombre";
     cout << setw(12) << "X";
     cout << setw(12) << "Y";
-    cout << setw(12) << "Puntuación";
+    cout << setw(16) << "Puntuación";
     cout << endl << endl;
     cout << civilizaciones.back();
 }
@@ -119,10 +119,10 @@ Civilizacion* Videogame::modificar( Civilizacion &c ){
     cout << endl << "Civilización encontrada, qué quieres modificar?" << endl;
     cout << endl;
     cout << left;
-    cout << setw(12) << "1) Nombre";
+    cout << setw(16) << "1) Nombre";
     cout << setw(12) << "2) X";
     cout << setw(12) << "3) Y";
-    cout << setw(12) << "4) Puntuación";
+    cout << setw(16) << "4) Puntuación";
     cout << endl;
     cout << "   " << c;
     cin >> op; cin.ignore();
