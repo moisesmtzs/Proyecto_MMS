@@ -2,6 +2,7 @@
 #define VIDEOGAME_H
 
 #include "civilizacion.h"
+#include <vector>
 
 class Videogame{
 
@@ -17,6 +18,8 @@ class Videogame{
         size_t Total();
         bool vacio() const;
         void mostrar();
+        void respaldar();
+        void recuperar();
         void push_back( const Civilizacion &c );
         void insert( const Civilizacion &c, size_t p );
         void crear( const Civilizacion &c, size_t n );

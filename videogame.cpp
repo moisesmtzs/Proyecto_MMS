@@ -19,10 +19,10 @@ void Videogame::mostrar(){
 
     cout << endl;
     cout << left;
-    cout << setw(12) << "Nombre";
+    cout << setw(16) << "Nombre";
     cout << setw(12) << "X";
     cout << setw(12) << "Y";
-    cout << setw(12) << "Puntuación";
+    cout << setw(16) << "Puntuación";
     cout << endl << endl;
     for ( size_t i = 0 ; i < civilizaciones.size() ; i++ ){
 
@@ -32,6 +32,61 @@ void Videogame::mostrar(){
 
     }
 
+}
+
+void Videogame::respaldar(){
+
+    ofstream archivo( "civilizaciones.txt", ios::out );
+    if ( archivo.is_open() ){
+        for ( size_t i = 0 ; i < civilizaciones.size() ; i++ ){
+
+            Civilizacion &c = civilizaciones[i];
+            archivo << c.getNombre() << endl;
+            archivo << c.getX() << endl;
+            archivo << c.getY() << endl;
+            archivo << c.getPuntuacion() << endl;
+            c.respaldarA(c);
+
+        }
+    }
+    archivo.close();
+
+}
+
+void Videogame::recuperar(){
+
+    ifstream archivo( "civilizaciones.txt");
+    if ( archivo.is_open() ){
+        while ( true ){
+
+            Civilizacion c;
+            string temp;
+            float x, y, punt;
+            getline(archivo,temp);
+            if ( archivo.eof() ){
+                break;
+            }
+            c.setNombre(temp);
+
+            getline(archivo,temp);
+            x = stof(temp);
+            c.setX(x);
+
+            getline(archivo,temp);
+            y = stof(temp);
+            c.setY(y);
+
+            getline(archivo,temp);
+            punt = stof(temp);
+            c.setPuntuacion(punt);
+
+            c.recuperarA(c);
+            
+            push_back(c);
+
+        }
+    }
+    archivo.close();
 
 }
 
@@ -56,10 +111,10 @@ void Videogame::crear( const Civilizacion &c, size_t n ){
 void Videogame::front() const {
     cout << endl << "\t| Primera Civilización |" << endl << endl;
     cout << left;
-    cout << setw(12) << "Nombre";
+    cout << setw(16) << "Nombre";
     cout << setw(12) << "X";
     cout << setw(12) << "Y";
-    cout << setw(12) << "Puntuación";
+    cout << setw(16) << "Puntuación";
     cout << endl << endl;
     cout << civilizaciones.front();
 }
@@ -67,10 +122,10 @@ void Videogame::front() const {
 void Videogame::back() const {
     cout << endl << "\t| Última Civilización |" << endl << endl;
     cout << left;
-    cout << setw(12) << "Nombre";
+    cout << setw(16) << "Nombre";
     cout << setw(12) << "X";
     cout << setw(12) << "Y";
-    cout << setw(12) << "Puntuación";
+    cout << setw(16) << "Puntuación";
     cout << endl << endl;
     cout << civilizaciones.back();
 }
@@ -119,10 +174,10 @@ Civilizacion* Videogame::modificar( Civilizacion &c ){
     cout << endl << "Civilización encontrada, qué quieres modificar?" << endl;
     cout << endl;
     cout << left;
-    cout << setw(12) << "1) Nombre";
+    cout << setw(16) << "1) Nombre";
     cout << setw(12) << "2) X";
     cout << setw(12) << "3) Y";
-    cout << setw(12) << "4) Puntuación";
+    cout << setw(16) << "4) Puntuación";
     cout << endl;
     cout << "   " << c;
     cin >> op; cin.ignore();

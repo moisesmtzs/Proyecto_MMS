@@ -1,5 +1,7 @@
-#include "videogame.h"
+#include <list>
+#include "menu.h"
 #include <stdexcept>
+#include "videogame.h"
 
 int main(){
 
@@ -7,29 +9,49 @@ int main(){
     string op;
     while ( true ){
         
-        cout << endl << "0) Salir" << endl;
-        cout << "1) Agregar nombre" << endl;
-        cout << "2) Agregar civilización" << endl;
-        cout << "3) Insertar" << endl;
-        cout << "4) Crear" << endl;
-        cout << "5) Primera civilización" << endl;
-        cout << "6) Última civilización" << endl;
-        cout << "7) Ordenar" << endl;
-        cout << "8) Eliminar civilización" << endl;
-        cout << "9) Buscar" << endl;
-        cout << "10) Modificar" << endl;
-        cout << "11) Mostrar" << endl;
+        if ( v.getNombreU() == "" ){
+            cout << endl << "0) Salir" << endl;
+            cout << "1) Agregar nombre" << endl;
+            cout << "2) Agregar civilización" << endl;
+            cout << "3) Insertar" << endl;
+            cout << "4) Crear" << endl;
+            cout << "5) Primera civilización" << endl;
+            cout << "6) Última civilización" << endl;
+            cout << "7) Ordenar" << endl;
+            cout << "8) Eliminar civilización" << endl;
+            cout << "9) Buscar" << endl;
+            cout << "10) Modificar" << endl;
+            cout << "11) Mostrar" << endl;
+            cout << "12) Respaldar" << endl;
+            cout << "13) Recuperar" << endl;
+        } else {
+            cout << endl << "\t| " << v.getNombreU() << " |" << endl;
+            cout << endl << "0) Salir" << endl;
+            cout << "1) Cambiar nombre" << endl;
+            cout << "2) Agregar civilización" << endl;
+            cout << "3) Insertar" << endl;
+            cout << "4) Crear" << endl;
+            cout << "5) Primera civilización" << endl;
+            cout << "6) Última civilización" << endl;
+            cout << "7) Ordenar" << endl;
+            cout << "8) Eliminar civilización" << endl;
+            cout << "9) Buscar" << endl;
+            cout << "10) Modificar" << endl;
+            cout << "11) Mostrar" << endl;            
+            cout << "12) Respaldar" << endl;
+            cout << "13) Recuperar" << endl;
+        }
         getline(cin,op);
         cout << endl;
         if ( op == "0" ){
             break;
         }
         else if ( op == "1" ){
+
             string nombre;
             cout << "Nombre de usuario: ";
             getline(cin,nombre);
             v.setNombreU(nombre);
-            cout << endl << "\t| " << v.getNombreU() << " |" << endl;
             
         }
         else if ( op == "2" ){
@@ -131,15 +153,8 @@ int main(){
             if ( ptr == nullptr ){
                 cout << "Civilización no encontrada" << endl;
             } else {
-                cout << "Civilización encontrada" << endl;
-                cout << endl;
-                cout << left;
-                cout << setw(12) << "Nombre";
-                cout << setw(12) << "X";
-                cout << setw(12) << "Y";
-                cout << setw(12) << "Puntuación";
-                cout << endl;
-                cout << *ptr << endl;
+                cout << endl << "Civilizacion encontrada" << endl << endl;
+                men(*ptr);
             }
 
         }
@@ -161,7 +176,12 @@ int main(){
         }
         else if ( op == "11" ){
             v.mostrar();
-
+        }
+        else if ( op == "12" ){
+            v.respaldar();
+        } 
+        else if ( op == "13" ){
+            v.recuperar();
         } else {
             cout << "Opción no válida, intente de nuevo \n";
         }
