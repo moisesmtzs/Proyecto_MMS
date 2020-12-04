@@ -1,5 +1,6 @@
 #include <list>
 #include "menu.h"
+#include "menuB.h"
 #include <stdexcept>
 #include "videogame.h"
 
@@ -154,7 +155,7 @@ int main(){
                 cout << "Civilización no encontrada" << endl;
             } else {
                 cout << endl << "Civilizacion encontrada" << endl << endl;
-                men(*ptr);
+                menuB(*ptr);
             }
 
         }

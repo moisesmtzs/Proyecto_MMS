@@ -90,6 +90,110 @@ void Civilizacion::agregarFinal( const Aldeano &a ){
     aldeanos.push_back(a);
 }
 
+void Civilizacion::agregarBarco( Barco *b ){
+
+    puerto.push_back(b);
+
+}
+
+void Civilizacion::mostrarBarco(){
+
+    cout << endl << left;
+    cout << setw(8) << "Id";
+    cout << setw(12) << "Combustible";
+    cout << setw(12) << "Velocidad";
+    cout << setw(12) << "Armadura";
+    cout << setw(12) << "Cantidad de Guerreros";
+    cout << endl << endl;
+    for ( auto &barcos: puerto ){
+        cout << barcos << endl;
+    }
+
+}
+
+void Civilizacion::buscarBarco( const string &id ){
+
+    bool band = false;
+    for ( auto i = puerto.begin(); i != puerto.end(); i++ ){
+
+        Barco *b = *i;
+        if ( id == b->getId() ){
+            
+            int op;
+            band = true;
+            cout << endl << "Barco encontrado" << endl << endl;
+            cout << left;
+            cout << setw(8) << "Id";
+            cout << setw(12) << "Combustible";
+            cout << setw(12) << "Velocidad";
+            cout << setw(12) << "Armadura";
+            cout << setw(12) << "Cantidad de Guerreros";
+            cout << endl << endl;
+            cout << b;
+            cout << endl;
+            while ( true ){
+
+                cout << "1) Agregar Guerrero" << endl
+                    << "2) Eliminar Guerrero" << endl
+                   << "3) Mostrar último guerrero" << endl
+                  << "4) Mostrar guerreros" << endl
+                 << "0) Salir" << endl
+                << "Elige una opción: "<< endl;
+                cin >> op; cin.ignore();
+                if ( op == 0 ){
+                    break;
+                }
+                else if ( op == 1 ){
+                    Guerrero g;
+                    cin >> g;
+                    b->agregarGuerrero(g);
+                }   
+                else if ( op == 2 ){
+                    b->eliminarGuerrero();
+                }   
+                else if ( op == 3 ){
+                    if ( b->getGuerreros() == 0 ){
+                        cout << endl << "\t\t~~No hay más guerreros~~" << endl << endl;
+                    } else {
+                        b->tope();
+                    }
+                }   
+                else if ( op == 4 ){
+                    b->mostrarG();
+                } else {
+                    cout << "Opción no válida, intenta de nuevo "<< endl << endl;
+                }   
+
+            }
+
+        }
+
+    }
+    if( band == false ){
+        cout << "Barco hundido, sigue buscando" << endl; 
+    }
+
+}
+
+void Civilizacion::eliminarBarcoId( const string &id ){
+    
+    for ( auto i = puerto.begin() ; i != puerto.end() ; i++ ){
+
+        Barco *b = *i;
+        if ( id == b->getId() ){
+            puerto.erase(i);
+            break;
+        }
+
+    }
+}
+
+void Civilizacion::eliminarBarcoCombustible( const double &c ){
+
+    puerto.remove_if([c]( const Barco *b ){ return c >= b->getCombustible() ;} );
+
+}
+
 void Civilizacion::eliminarNombre( const string &s ){
 
     for ( auto i = aldeanos.begin() ; i != aldeanos.end() ; i++ ){

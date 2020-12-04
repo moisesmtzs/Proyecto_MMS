@@ -2,12 +2,14 @@
 #define CIVILIZACION_H
 
 #include "aldeano.h"
+#include "barco.h"
 
 using namespace std;
 
 class Civilizacion{
     
     list<Aldeano> aldeanos;
+    list<Barco*> puerto;
     string nombre;
     float x,y;
     float puntuacion;
@@ -26,6 +28,12 @@ class Civilizacion{
         float getPuntuacion();
         void agregarInicio( const Aldeano &a );
         void agregarFinal( const Aldeano &a );
+        void agregarBarco( Barco *b );
+        void mostrarBarco();
+        void buscarBarco( const string &id );
+        void eliminarBarcoId( const string &id );
+        void eliminarBarcoCombustible( const double &c );
+
         void eliminarNombre( const string &s );
         void eliminarSalud( int s );
         void eliminarEdad();
